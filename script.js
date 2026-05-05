@@ -10,9 +10,7 @@ async function lookupNumber() {
   resultBox.innerText = "Searching...";
 
   try {
-    const url = `https://api.lookupnow.top/api/v1/query.php?key=pk_live_22ce832d6208fc1abc9c676bf7709a72e8889c&number=${encodeURIComponent(number)}`;
-
-    const res = await fetch(url);
+    const res = await fetch("/api/lookup?number=" + encodeURIComponent(number));
     const data = await res.json();
 
     resultBox.innerText = JSON.stringify(data, null, 2);
