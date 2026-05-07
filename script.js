@@ -1,6 +1,6 @@
 // ===============================
 // Number Identity by Alvi
-// Final Professional script.js
+// Final script.js
 // Number Lookup + Courier Report
 // ===============================
 
@@ -144,7 +144,8 @@ async function checkCourier() {
   showLoading();
 
   try {
-    const data = await fetchAPI("/api/courier", { number });
+    // IMPORTANT: courier API uses phone parameter
+    const data = await fetchAPI("/api/courier", { phone: number });
     hideLoading();
     showCourierReport(data, number);
   } catch (error) {
@@ -165,7 +166,9 @@ function showCourierReport(data, number) {
     "total_order",
     "orders",
     "total_orders",
-    "totalDelivery"
+    "totalDelivery",
+    "total_delivery",
+    "totalOrders"
   ], 0));
 
   const delivered = Number(pick(info, [
@@ -174,7 +177,9 @@ function showCourierReport(data, number) {
     "delivered",
     "delivery",
     "successful",
-    "completed"
+    "completed",
+    "success_delivery",
+    "total_delivered"
   ], 0));
 
   const cancelled = Number(pick(info, [
@@ -183,7 +188,9 @@ function showCourierReport(data, number) {
     "cancelled",
     "returned",
     "return",
-    "failed"
+    "failed",
+    "total_cancelled",
+    "cancel_delivery"
   ], 0));
 
   const successRate = total > 0 ? Math.round((delivered / total) * 100) : 0;
