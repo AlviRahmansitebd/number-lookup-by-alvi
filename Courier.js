@@ -11,11 +11,13 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `${process.env.COURIER_API_URL}?phone=${encodeURIComponent(inputPhone)}`,
+      `${process.env.COURIER_API_URL}?phone_number=${encodeURIComponent(inputPhone)}`,
       {
         method: "GET",
         headers: {
           "Accept": "application/json",
+          "Authorization": `Bearer ${process.env.COURIER_API_KEY}`,
+          "api-key": process.env.COURIER_API_KEY,
           "api_key": process.env.COURIER_API_KEY
         }
       }
@@ -23,7 +25,11 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    return res.status(200).json(data);
+    return res.status(200).json({
+      success: true,
+      raw: data
+    });
+
   } catch (error) {
     return res.status(500).json({
       success: false,
