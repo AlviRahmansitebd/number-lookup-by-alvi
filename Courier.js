@@ -10,15 +10,15 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(
-      `https://api.bdcourier.com/courier-check?phone=${encodeURIComponent(inputPhone)}`,
-      {
-        method: "GET",
-        headers: {
-          "api-key": process.env.COURIER_API_KEY
-        }
-      }
-    );
+
+    const apiKey = process.env.COURIER_API_KEY;
+
+    const url =
+      `https://api.bdcourier.com/courier-check` +
+      `?phone=${encodeURIComponent(inputPhone)}` +
+      `&api_key=${apiKey}`;
+
+    const response = await fetch(url);
 
     const data = await response.json();
 
@@ -27,8 +27,7 @@ export default async function handler(req, res) {
   } catch (error) {
     return res.status(500).json({
       status: "error",
-      message: "Courier API failed",
-      details: error.message
+      message: error.message
     });
   }
 }
