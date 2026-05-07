@@ -15,15 +15,16 @@ body {
 
 .page {
   width: 100%;
-  max-width: 430px;
+  max-width: 420px;
   margin: 0 auto;
-  padding: 18px 14px 28px;
+  padding: 18px 16px 28px;
 }
 
 .hero-card {
+  width: 100%;
   background: rgba(15, 23, 42, 0.96);
-  border: 1px solid rgba(34, 197, 94, 0.32);
-  border-radius: 28px;
+  border: 1px solid rgba(34, 197, 94, 0.40);
+  border-radius: 30px;
   padding: 22px 18px 24px;
   box-shadow: 0 24px 75px rgba(0, 0, 0, 0.48);
 }
@@ -42,11 +43,11 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 34px;
+  font-size: 32px;
   line-height: 1.18;
   font-weight: 900;
   letter-spacing: -1px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 h1 span {
@@ -56,30 +57,30 @@ h1 span {
 }
 
 .sub-bn {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.6;
   color: #e5e7eb;
   margin-bottom: 8px;
 }
 
 .sub-en {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
   color: #94a3b8;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .search-box input {
   width: 100%;
-  height: 58px;
-  padding: 0 17px;
-  border-radius: 18px;
+  height: 54px;
+  padding: 0 16px;
+  border-radius: 17px;
   border: 1px solid rgba(148, 163, 184, 0.25);
   background: #020617;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 15px;
   outline: none;
-  margin-bottom: 14px;
+  margin-bottom: 13px;
 }
 
 .search-box input::placeholder {
@@ -93,19 +94,19 @@ h1 span {
 
 .search-box button {
   width: 100%;
-  height: 58px;
+  height: 54px;
   border: none;
-  border-radius: 18px;
+  border-radius: 17px;
   background: linear-gradient(135deg, #22c55e, #16a34a);
   color: #ffffff;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 900;
   cursor: pointer;
   box-shadow: 0 14px 35px rgba(34, 197, 94, 0.28);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+}
+
+.hidden {
+  display: none;
 }
 
 .loading {
@@ -133,10 +134,6 @@ h1 span {
   }
 }
 
-.hidden {
-  display: none;
-}
-
 .result {
   margin-top: 20px;
 }
@@ -157,10 +154,6 @@ h1 span {
 .result-row {
   padding: 12px 0;
   border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-}
-
-.result-row:last-child {
-  border-bottom: none;
 }
 
 .label {
@@ -187,12 +180,12 @@ h1 span {
 .quick-features {
   margin-top: 18px;
   display: grid;
-  gap: 11px;
+  gap: 12px;
 }
 
 .quick-features div {
   background: rgba(15, 23, 42, 0.94);
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  border: 1px solid rgba(148, 163, 184, 0.22);
   border-radius: 18px;
   padding: 15px;
   text-align: center;
@@ -203,7 +196,7 @@ h1 span {
 .features {
   margin-top: 22px;
   background: rgba(15, 23, 42, 0.86);
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 22px;
   padding: 18px;
 }
@@ -211,25 +204,30 @@ h1 span {
 .features h2 {
   font-size: 23px;
   margin-bottom: 14px;
+  text-align: center;
 }
 
 .feature-card {
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  text-align: center;
 }
 
 .feature-card:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .feature-card h3 {
   font-size: 17px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #ffffff;
 }
 
 .feature-card p {
-  color: #94a3b8;
+  color: #cbd5e1;
   font-size: 14px;
   line-height: 1.6;
 }
@@ -244,30 +242,17 @@ footer {
 
 @media (max-width: 420px) {
   .page {
-    max-width: 390px;
-    padding: 16px 12px 24px;
+    max-width: 380px;
+    padding: 16px 14px 24px;
   }
 
   .hero-card {
-    border-radius: 26px;
-    padding: 20px 17px 22px;
+    transform: scale(0.96);
+    transform-origin: top center;
+    margin-bottom: -18px;
   }
 
   h1 {
-    font-size: 31px;
-  }
-
-  .sub-bn {
-    font-size: 16px;
-  }
-
-  .sub-en {
-    font-size: 14px;
-  }
-
-  .search-box input,
-  .search-box button {
-    height: 54px;
-    font-size: 15px;
+    font-size: 30px;
   }
 }
