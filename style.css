@@ -15,39 +15,38 @@ body {
 
 .page {
   width: 100%;
-  max-width: 420px;
+  max-width: 430px;
   margin: 0 auto;
-  padding: 18px 16px 28px;
+  padding: 18px 14px 30px;
 }
 
 .hero-card {
-  width: 100%;
   background: rgba(15, 23, 42, 0.96);
-  border: 1px solid rgba(34, 197, 94, 0.40);
+  border: 1px solid rgba(34, 197, 94, 0.42);
   border-radius: 30px;
-  padding: 22px 18px 24px;
-  box-shadow: 0 24px 75px rgba(0, 0, 0, 0.48);
+  padding: 24px 20px;
+  box-shadow: 0 24px 75px rgba(0, 0, 0, 0.5);
 }
 
 .badge {
   width: fit-content;
-  margin: 0 auto 22px;
-  padding: 8px 15px;
+  margin: 0 auto 24px;
+  padding: 9px 16px;
   border-radius: 999px;
   background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.45);
+  border: 1px solid rgba(34, 197, 94, 0.5);
   color: #4ade80;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 h1 {
   text-align: center;
-  font-size: 32px;
-  line-height: 1.18;
+  font-size: 35px;
+  line-height: 1.2;
   font-weight: 900;
   letter-spacing: -1px;
-  margin-bottom: 22px;
+  margin-bottom: 28px;
 }
 
 h1 span {
@@ -57,30 +56,30 @@ h1 span {
 }
 
 .sub-bn {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.6;
   color: #e5e7eb;
   margin-bottom: 8px;
 }
 
 .sub-en {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5;
   color: #94a3b8;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .search-box input {
   width: 100%;
-  height: 54px;
-  padding: 0 16px;
-  border-radius: 17px;
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  height: 56px;
+  padding: 0 17px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
   background: #020617;
   color: #ffffff;
   font-size: 15px;
   outline: none;
-  margin-bottom: 13px;
+  margin-bottom: 14px;
 }
 
 .search-box input::placeholder {
@@ -94,15 +93,15 @@ h1 span {
 
 .search-box button {
   width: 100%;
-  height: 54px;
+  height: 56px;
   border: none;
-  border-radius: 17px;
+  border-radius: 18px;
   background: linear-gradient(135deg, #22c55e, #16a34a);
   color: #ffffff;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 900;
   cursor: pointer;
-  box-shadow: 0 14px 35px rgba(34, 197, 94, 0.28);
+  box-shadow: 0 14px 35px rgba(34, 197, 94, 0.3);
 }
 
 .hidden {
@@ -156,6 +155,10 @@ h1 span {
   border-bottom: 1px solid rgba(148, 163, 184, 0.15);
 }
 
+.result-row:last-child {
+  border-bottom: none;
+}
+
 .label {
   font-size: 11px;
   text-transform: uppercase;
@@ -177,42 +180,83 @@ h1 span {
   padding: 15px;
 }
 
+/* 3 Feature Buttons */
 .quick-features {
   margin-top: 18px;
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
 .quick-features div {
-  background: rgba(15, 23, 42, 0.94);
-  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(34, 197, 94, 0.45);
   border-radius: 18px;
-  padding: 15px;
+  padding: 14px 6px;
   text-align: center;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.35;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
 }
 
-.features {
-  margin-top: 22px;
-  background: rgba(15, 23, 42, 0.86);
-  border: 1px solid rgba(148, 163, 184, 0.18);
+/* Facebook Contact */
+.contact-section {
+  margin-top: 18px;
+}
+
+.contact-box {
+  text-decoration: none;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(34, 197, 94, 0.45);
   border-radius: 22px;
-  padding: 18px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 900;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+}
+
+.fb-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1877f2, #0a58ca);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+}
+
+/* Key Features */
+.features {
+  margin-top: 24px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 24px;
+  padding: 20px;
 }
 
 .features h2 {
-  font-size: 23px;
-  margin-bottom: 14px;
   text-align: center;
+  font-size: 25px;
+  margin-bottom: 16px;
 }
 
 .feature-card {
-  padding: 16px;
-  margin-bottom: 12px;
-  border-radius: 18px;
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(15, 23, 42, 0.96);
   border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 18px;
+  padding: 17px;
+  margin-bottom: 13px;
   text-align: center;
 }
 
@@ -221,7 +265,7 @@ h1 span {
 }
 
 .feature-card h3 {
-  font-size: 17px;
+  font-size: 18px;
   margin-bottom: 8px;
   color: #ffffff;
 }
@@ -234,25 +278,4 @@ h1 span {
 
 footer {
   text-align: center;
-  color: #94a3b8;
-  font-size: 12px;
-  margin-top: 22px;
-  line-height: 1.8;
-}
-
-@media (max-width: 420px) {
-  .page {
-    max-width: 380px;
-    padding: 16px 14px 24px;
-  }
-
-  .hero-card {
-    transform: scale(0.96);
-    transform-origin: top center;
-    margin-bottom: -18px;
-  }
-
-  h1 {
-    font-size: 30px;
-  }
-}
+  color
