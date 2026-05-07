@@ -2,29 +2,77 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="aMygbpDhvn15iTali2QeLMbSI8nRIQ9R52K6WaBafY" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Number Identity Alvi Tech</title>
-  <meta name="description" content="Number Identity Alvi Tech - Fast and secure phone number lookup tool.">
-  <meta name="google-site-verification" content="aMygbpDhvn15iTali2QeLMbSI8nRIQ9R52K6WaBafY" />
+  <meta name="description" content="Number Identity Alvi Tech - Fast and secure phone number lookup website." />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <main class="page">
-
     <section class="hero-card">
       <div class="badge">📱 Number Intelligence</div>
 
       <h1>
-        Number Identity<br>
+        Number Identity
         <span>Alvi Tech</span>
       </h1>
 
-      <p class="bangla-text">যেকোনো নাম্বারের পরিচয় এখন এক ক্লিকে।</p>
-      <p class="english-text">Find identity behind any phone number instantly.</p>
+      <p class="sub-bn">যেকোনো নাম্বারের পরিচয় এখন এক ক্লিকে।</p>
+      <p class="sub-en">Find identity behind any phone number instantly.</p>
 
       <div class="search-box">
-        <input id="number" type="tel" placeholder="Enter number e.g. 017XXXXXXXX">
-        <button onclick
+        <input id="number" type="tel" placeholder="Enter number e.g. 017XXXXXXXX" />
+        <button type="button" onclick="lookupNumber()">🔍 Search Identity</button>
+      </div>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <span>Searching information...</span>
+      </div>
+
+      <div id="result" class="result hidden"></div>
+    </section>
+
+    <section class="quick-features">
+      <div>⚡ Fast Lookup</div>
+      <div>🔒 Secure API</div>
+      <div>📱 Mobile Friendly</div>
+    </section>
+
+    <section class="features">
+      <h2>Key Features</h2>
+
+      <div class="feature-card">
+        <h3>Instant Results</h3>
+        <p>Get operator details in milliseconds. No waiting.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Completely Free</h3>
+        <p>Our lookup tool and developer API are 100% free to use, with no hidden costs.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Privacy First</h3>
+        <p>We do not store or log any numbers you search. Your history is saved only on your device.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Developer Friendly</h3>
+        <p>Integrate number validation into your own projects with our simple, public REST API.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Number Identity Alvi Tech</p>
+      <p>Privacy: We do not store searched phone numbers.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
