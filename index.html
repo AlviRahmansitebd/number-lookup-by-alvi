@@ -9,16 +9,16 @@
   <meta name="description" content="Number Lookup by Alvi Tech. Find identity behind any phone number instantly." />
   <meta name="keywords" content="number lookup, phone lookup, number identify, caller identity, Alvi Tech" />
 
-  <link rel="stylesheet" href="style.css?v=500" />
+  <link rel="stylesheet" href="style.css?v=700" />
 </head>
 
 <body>
   <main class="page">
-
     <section class="hero">
-      <div class="logo-badge">
+      <div class="logo-circle">
+        <div class="logo-text top">NUMBER INTELLIGENCE</div>
         <div class="brain">🧠</div>
-        <span>Number Intelligence</span>
+        <div class="logo-text bottom">ALVI TECH</div>
       </div>
 
       <h1>
@@ -29,36 +29,53 @@
       <p class="bn-text">যেকোনো নাম্বারের পরিচয় এখন এক ক্লিকে।</p>
       <p class="en-text">Find identity behind any phone number instantly.</p>
 
-      <div class="glass-panel">
+      <div class="search-panel">
         <input id="number" type="tel" placeholder="Enter number e.g. 017XXXXXXXX" />
 
-        <button onclick="lookupNumber()">
-          🔍 Search Identity
-        </button>
+        <div id="loading" class="loading hidden">Searching information...</div>
+        <div id="result" class="result hidden"></div>
 
-        <div class="feature-row">
-          <div>
-            <span>⚡</span>
-            <p>Fast Lookup</p>
-          </div>
+        <button onclick="lookupNumber()">🔍 Search Identity</button>
+      </div>
+    </section>
 
-          <div>
-            <span>🔒</span>
-            <p>Secure API</p>
-          </div>
+    <section class="contact-section">
+  <a href="https://www.facebook.com/share/1Crcd8PcbM/" target="_blank" class="contact-box">
+    <div class="fb-icon">f</div>
+    <span>Contact</span>
+  </a>
+</section>
 
-          <div>
-            <span>📱</span>
-            <p>Mobile Friendly</p>
-          </div>
-        </div>
+<section class="feature-row">
+  <div>
+    <span>⚡</span>
+    <p>Fast Lookup</p>
+  </div>
+
+  <div>
+    <span>🔒</span>
+    <p>Secure API</p>
+  </div>
+
+  <div>
+    <span>📱</span>
+    <p>Mobile Friendly</p>
+  </div>
+</section>
+      <div>
+        <span>⚡</span>
+        <p>Fast Lookup</p>
       </div>
 
-      <div id="loading" class="loading hidden">
-        Searching information...
+      <div>
+        <span>🔒</span>
+        <p>Secure API</p>
       </div>
 
-      <div id="result" class="result hidden"></div>
+      <div>
+        <span>📱</span>
+        <p>Mobile Friendly</p>
+      </div>
     </section>
 
     <section class="contact-section">
@@ -96,9 +113,8 @@
       <p>© 2026 Number Identity Alvi Tech</p>
       <p>Privacy: We do not store searched phone numbers.</p>
     </footer>
-
   </main>
 
-  <script src="script.js?v=500"></script>
+  <script src="script.js?v=700"></script>
 </body>
 </html>
