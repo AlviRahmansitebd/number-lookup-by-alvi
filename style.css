@@ -278,10 +278,11 @@ button {
 
 .features {
   margin-top: 24px;
-  background: rgba(15, 23, 42, 0.92);
+  background: rgba(15, 23, 42, 0.9);
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 24px;
   padding: 20px;
+  text-align: center;
 }
 
 .features h2 {
