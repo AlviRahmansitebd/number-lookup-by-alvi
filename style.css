@@ -261,6 +261,7 @@ button {
   font-size: 26px;
   font-weight: 900;
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+  margin-bottom: 28px;
 }
 
 .fb-icon {
