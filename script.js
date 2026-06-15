@@ -1,143 +1,98 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+const DOM = {
+  number: () => document.getElementById("number"),
+  result: () => document.getElementById("result"),
+  loading: () => document.getElementById("loading")
+};
+
+function showError(message) {
+  const resultBox = DOM.result();
+  resultBox.className = "result error";
+  resultBox.innerText = "❌ " + message;
 }
 
-body {
-  background: #0a0f1e;
-  color: #ffffff;
-  font-family: 'Segoe UI', sans-serif;
-  min-height: 100vh;
+function escapeHtml(value) {
+  const div = document.createElement("div");
+  div.textContent = value ?? "";
+  return div.innerHTML;
 }
 
-/* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  border-bottom: 1px solid rgba(0, 255, 150, 0.15);
-  background: rgba(10, 15, 30, 0.95);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+function pick(obj, keys, fallback = "N/A") {
+  for (const key of keys) {
+    if (obj && obj[key] !== undefined && obj[key] !== null && obj[key] !== "") {
+      return obj[key];
+    }
+  }
+  return fallback;
 }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+async function lookupNumber() {
+  const number = DOM.number().value.trim();
+
+  if (!number) {
+    showError("Please enter a mobile number.");
+    return;
+  }
+
+  DOM.result().className = "result hidden";
+  DOM.result().innerHTML = "";
+  DOM.loading().classList.remove("hidden");
+
+  try {
+    const response = await fetch(`/api/lookup?number=${encodeURIComponent(number)}`);
+    const data = await response.json();
+
+    DOM.loading().classList.add("hidden");
+
+    if (!response.ok || data.error || data.status === "error" || data.code === "INVALID_KEY") {
+      showError(data.message || data.error || "Lookup failed.");
+      return;
+    }
+
+    showNumberResult(data);
+  } catch (error) {
+    DOM.loading().classList.add("hidden");
+    showError("Server error. Please try again.");
+  }
 }
 
-.nav-icon {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #00ff96;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
+function showNumberResult(data) {
+  const resultBox = DOM.result();
+  resultBox.className = "result success";
 
-.nav-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
+  const info = data.data || data.result || data;
 
-.nav-sub {
-  font-size: 10px;
-  color: #00ff96;
-  letter-spacing: 2px;
-}
+  const name = pick(info, ["name", "NAME", "full_name", "fullname"], "Not Found");
+  const phone = pick(info, ["number", "phone", "mobile", "international_format"], "N/A");
+  const country = pick(info, ["country", "country_name", "location"], "N/A");
+  const carrier = pick(info, ["carrier", "operator", "sim", "network"], "N/A");
+  const type = pick(info, ["type", "line_type", "phone_type"], "Unknown");
 
-.nav-menu {
-  font-size: 24px;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* MAIN */
-.page {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 24px 16px 40px;
-}
-
-/* HERO */
-.hero {
-  background: linear-gradient(145deg, #0d1b2e, #0a1628);
-  border: 1px solid rgba(0, 255, 150, 0.2);
-  border-radius: 24px;
-  padding: 32px 20px;
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.logo-circle {
-  width: 120px;
-  height: 120px;
-  border: 2px solid #00ff96;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 255, 150, 0.05);
-}
-
-.logo-text {
-  font-size: 9px;
-  color: #00ff96;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-.brain {
-  font-size: 36px;
-}
-
-h1 {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-h1 span {
-  display: block;
-  color: #00ff96;
-}
-
-.divider {
-  font-size: 20px;
-  margin: 10px 0;
-  opacity: 0.7;
-}
-
-.bn-text {
-  font-size: 15px;
-  color: #cbd5e1;
-  margin-bottom: 6px;
-}
-
-.en-text {
-  font-size: 13px;
-  color: #94a3b8;
-  margin-bottom: 20px;
-}
-
-/* SEARCH */
-.search-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.input-wrap {
-  display: flex;
+  resultBox.innerHTML = `
+    <div class="result-card">
+      <h3>✅ Lookup Result</h3>
+      <div class="result-row">
+        <div class="label">Name</div>
+        <div class="value">${escapeHtml(name)}</div>
+      </div>
+      <div class="result-row">
+        <div class="label">Number</div>
+        <div class="value">${escapeHtml(phone)}</div>
+      </div>
+      <div class="result-row">
+        <div class="label">Country / Location</div>
+        <div class="value">${escapeHtml(country)}</div>
+      </div>
+      <div class="result-row">
+        <div class="label">Carrier / Operator</div>
+        <div class="value">${escapeHtml(carrier)}</div>
+      </div>
+      <div class="result-row">
+        <div class="label">Type</div>
+        <div class="value">${escapeHtml(type)}</div>
+      </div>
+    </div>
+  `;
+}  display: flex;
   align-items: center;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(0, 255, 150, 0.3);
