@@ -6,28 +6,25 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Prefix দিয়ে operator বের করা
+    const response = await fetch(
+      `https://www.numberlookup.top/?number=${number}`,
+      {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "Accept-Language": "en-US,en;q=0.5",
+          "Referer": "https://www.numberlookup.top/"
+        }
+      }
+    );
+
+    const html = await response.text();
+
+    // HTML থেকে operator বের করা
+    const carrierMatch = html.match(/Grameenphone|Robi|Banglalink|Airtel|Teletalk/i);
+    const carrier = carrierMatch ? carrierMatch[0] : "Unknown";
+
     const cleaned = number.replace(/\D/g, "");
-    const prefix = cleaned.substring(0, 3);
-
-    const operators = {
-      "017": "Grameenphone (GP)",
-      "013": "Grameenphone (GP)",
-      "018": "Robi",
-      "016": "Airtel",
-      "019": "Banglalink",
-      "014": "Banglalink",
-      "015": "Teletalk"
-    };
-
-    const carrier = operators[prefix] || "Unknown";
-
-    if (!operators[prefix]) {
-      return res.status(200).json({
-        success: false,
-        error: "Invalid BD number"
-      });
-    }
 
     return res.status(200).json({
       success: true,
