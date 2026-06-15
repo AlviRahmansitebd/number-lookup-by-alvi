@@ -38,7 +38,7 @@ async function lookupNumber() {
   DOM.loading().classList.remove("hidden");
 
   try {
-    const response = await fetch(`/api/lookup?number=${encodeURIComponent(number)}`);
+const response = await fetch(`https://www.numberlookup.top/api/lookup?number=${encodeURIComponent(number)}`);
     const data = await response.json();
 
     DOM.loading().classList.add("hidden");
