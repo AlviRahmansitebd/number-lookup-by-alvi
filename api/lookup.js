@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const url = `${process.env.LOOKUP_API_URL}?number=${number}&key=${process.env.LOOKUP_API_KEY}`;
+    const url = `${process.env.LOOKUP_API_URL}?key=${process.env.LOOKUP_API_KEY}&number=${number}`;
 
     const response = await fetch(url);
     const data = await response.json();
