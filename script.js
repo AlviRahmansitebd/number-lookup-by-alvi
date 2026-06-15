@@ -1,4 +1,4 @@
-st DOM = {
+const DOM = {
   number: () => document.getElementById("number"),
   result: () => document.getElementById("result"),
   loading: () => document.getElementById("loading")
@@ -29,7 +29,7 @@ async function lookupNumber() {
   const number = DOM.number().value.trim();
 
   if (!number) {
-    showError("দয়া করে একটি মোবাইল নাম্বার লিখুন।");
+    showError("Please enter a mobile number.");
     return;
   }
 
@@ -70,27 +70,22 @@ function showNumberResult(data) {
   resultBox.innerHTML = `
     <div class="result-card">
       <h3>✅ Lookup Result</h3>
-
       <div class="result-row">
         <div class="label">Name</div>
         <div class="value">${escapeHtml(name)}</div>
       </div>
-
       <div class="result-row">
         <div class="label">Number</div>
         <div class="value">${escapeHtml(phone)}</div>
       </div>
-
       <div class="result-row">
         <div class="label">Country / Location</div>
         <div class="value">${escapeHtml(country)}</div>
       </div>
-
       <div class="result-row">
         <div class="label">Carrier / Operator</div>
         <div class="value">${escapeHtml(carrier)}</div>
       </div>
-
       <div class="result-row">
         <div class="label">Type</div>
         <div class="value">${escapeHtml(type)}</div>
