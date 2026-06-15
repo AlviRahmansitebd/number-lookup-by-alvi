@@ -38,8 +38,7 @@ async function lookupNumber() {
   DOM.loading().classList.remove("hidden");
 
   try {
-const response = await fetch(`https://www.numberlookup.top/api/lookup?number=${encodeURIComponent(number)}`);
-
+const response = await fetch(`/api/lookup?number=${encodeURIComponent(number)}`);
     DOM.loading().classList.add("hidden");
 
     if (!response.ok || data.error || data.status === "error" || data.code === "INVALID_KEY") {
