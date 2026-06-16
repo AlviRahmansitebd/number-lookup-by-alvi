@@ -1,107 +1,364 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="google-site-verification" content="aMygbpDhvn15iTali2QeLMbSI8nRIQ9R52K6WaBafY" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Number Lookup by Alvi Tech</title>
-  <meta name="description" content="Number Lookup by Alvi Tech. Find identity behind any phone number instantly." />
-  <meta name="keywords" content="number lookup, phone lookup, number identify, caller identity, Alvi Tech" />
-  <link rel="stylesheet" href="style.css?v=1000" />
-</head>
-<body>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <nav class="navbar">
-    <div class="nav-logo">
-      <div class="nav-icon">👤</div>
-      <div class="nav-text">
-        <div class="nav-title">Number Identity</div>
-        <div class="nav-sub">BY ALVI TECH</div>
-      </div>
-    </div>
-    <div class="nav-menu">☰</div>
-  </nav>
+body {
+  font-family: Arial, "Noto Sans Bengali", sans-serif;
+  min-height: 100vh;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at top, rgba(20, 184, 166, 0.28), transparent 30%),
+    linear-gradient(180deg, #0b1f24 0%, #07111f 45%, #020617 100%);
+}
 
-  <main class="page">
-    <section class="hero">
-      <div class="logo-circle">
-        <div class="logo-text">NUMBER INTELLIGENCE</div>
-        <div class="brain">🧠</div>
-      </div>
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: rgba(7, 17, 31, 0.97);
+  border-bottom: 1px solid rgba(45, 212, 191, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
 
-      <h1>Number Identity</h1>
-      <h1 class="green">Alvi Tech</h1>
-      <div class="divider">🛡</div>
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-      <p class="bn-text">যেকোনো নাম্বারের পরিচয় এখন এক ক্লিকে।</p>
-      <p class="en-text">Find identity behind any phone number instantly.</p>
+.nav-icon {
+  width: 38px;
+  height: 38px;
+  border: 2px solid #5eead4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  background: rgba(45, 212, 191, 0.08);
+}
 
-      <div class="search-panel">
-        <div class="input-wrap">
-          <span class="input-icon">📱</span>
-          <input id="number" type="tel" placeholder="Enter number e.g. 017XXXXXXXX" />
-        </div>
-        <div id="loading" class="loading hidden">Searching information...</div>
-        <div id="result" class="result hidden"></div>
-        <button onclick="lookupNumber()">🔍 Search Identity</button>
-      </div>
-    </section>
+.nav-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #eaf6ff;
+}
 
-    <section class="why-section">
-      <h2>Why Choose Us?</h2>
-      <div class="why-grid">
-        <div class="why-card">
-          <span>⚡</span>
-          <h3>Fast Lookup</h3>
-          <p>Get result instantly within seconds.</p>
-        </div>
-        <div class="why-card">
-          <span>🔒</span>
-          <h3>Secure API</h3>
-          <p>Your data is safe with advanced encryption.</p>
-        </div>
-        <div class="why-card">
-          <span>📱</span>
-          <h3>Mobile Friendly</h3>
-          <p>Works perfectly on any device.</p>
-        </div>
-      </div>
-    </section>
+.nav-sub {
+  font-size: 9px;
+  color: #5eead4;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
 
-    <section class="contact-section">
-      <a href="https://www.facebook.com/share/1Crcd8PcbM/" target="_blank" class="contact-box">
-        <div class="fb-icon">f</div>
-        <span>Contact</span>
-      </a>
-    </section>
+.nav-menu {
+  font-size: 22px;
+  cursor: pointer;
+  color: #cbd5e1;
+}
 
-    <section class="features-section">
-      <h2>Key Features</h2>
-      <div class="feature-card">
-        <h3>⚡ Instant Results</h3>
-        <p>Get operator details in milliseconds. No waiting.</p>
-      </div>
-      <div class="feature-card">
-        <h3>💚 Completely Free</h3>
-        <p>Our lookup tool and developer API are 100% free to use, with no hidden costs.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🔒 Privacy First</h3>
-        <p>We do not store or log any numbers you search. Your history is saved only on your device.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🛠 Developer Friendly</h3>
-        <p>Integrate number validation into your own projects with our simple, public REST API.</p>
-      </div>
-    </section>
+/* PAGE */
+.page {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 16px 14px 32px;
+}
 
-    <footer>
-      <p>🛡 Powered by <span class="green">Alvi Tech</span> • Trusted Number Intelligence</p>
-      <p>© 2026 Number Identity Alvi Tech</p>
-      <p>Privacy: We do not store searched phone numbers.</p>
-    </footer>
-  </main>
+/* HERO */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  padding: 28px 18px 22px;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(7, 17, 31, 0.98));
+  border: 1px solid rgba(45, 212, 191, 0.32);
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.45),
+    inset 0 0 35px rgba(45, 212, 191, 0.06);
+}
 
-  <script src="script.js?v=1000"></script>
-</body>
-</html>
+.logo-circle {
+  width: 125px;
+  height: 125px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.18), rgba(15, 23, 42, 0.96));
+  border: 1px solid rgba(94, 234, 212, 0.45);
+  box-shadow: 0 0 22px rgba(45, 212, 191, 0.22);
+}
+
+.brain {
+  font-size: 40px;
+  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.45));
+}
+
+.logo-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #b7fff1;
+}
+
+.logo-text.top { top: 18px; }
+.logo-text.bottom { bottom: 18px; }
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  line-height: 1.14;
+  font-weight: 900;
+  color: #eaf6ff;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+  margin-bottom: 16px;
+}
+
+h1 span {
+  display: block;
+  margin-top: 10px;
+  color: #a7f3d0;
+}
+
+.bn-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #f1f5f9;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.en-text {
+  font-size: 15px;
+  line-height: 1.55;
+  color: #cbd5e1;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* SEARCH */
+.search-panel {
+  padding: 18px 12px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.55), rgba(15, 23, 42, 0.86));
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.04);
+}
+
+input {
+  width: 100%;
+  height: 56px;
+  border-radius: 18px;
+  border: 1px solid rgba(203, 213, 225, 0.35);
+  background: #07111f;
+  color: white;
+  padding: 0 18px;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 14px;
+}
+
+input::placeholder { color: #94a3b8; }
+
+input:focus {
+  border-color: #5eead4;
+  box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.13);
+}
+
+button {
+  width: 84%;
+  height: 54px;
+  margin: 14px auto 0;
+  display: block;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #34d399, #22c55e, #16a34a);
+  color: white;
+  font-size: 17px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 0 28px rgba(34, 197, 94, 0.45);
+}
+
+button:active { opacity: 0.85; }
+
+/* LOADING */
+.loading {
+  margin: 6px 0 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(2, 6, 23, 0.55);
+  color: #cbd5e1;
+  font-size: 15px;
+  text-align: center;
+}
+
+.hidden { display: none; }
+.result { margin: 8px 0 10px; }
+
+/* RESULT */
+.result-card {
+  background: #07111f;
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  border-radius: 18px;
+  padding: 15px;
+}
+
+.result-card h3 { color: #5eead4; margin-bottom: 12px; }
+
+.result-row {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.result-row:last-child { border-bottom: none; }
+
+.label {
+  font-size: 11px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.value { font-size: 15px; color: white; word-break: break-word; }
+
+.error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fecaca;
+  border-radius: 16px;
+  padding: 14px;
+}
+
+/* FEATURE ROW */
+.feature-row {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32);
+}
+
+.feature-row div {
+  text-align: center;
+  padding: 16px 6px;
+  border-right: 1px solid rgba(45, 212, 191, 0.22);
+}
+
+.feature-row div:last-child { border-right: none; }
+.feature-row span { display: block; font-size: 28px; margin-bottom: 8px; }
+.feature-row p { font-size: 13px; line-height: 1.25; font-weight: 900; }
+
+/* CONTACT */
+.contact-section { margin-top: 18px; }
+
+.contact-box {
+  min-height: 105px;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(8, 47, 73, 0.65));
+  border: 1px solid rgba(45, 212, 191, 0.32);
+  border-radius: 26px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: white;
+  font-size: 26px;
+  font-weight: 900;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+  margin-bottom: 28px;
+}
+
+.fb-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #60a5fa, #1877f2, #0a58ca);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: 900;
+  box-shadow: 0 0 22px rgba(59, 130, 246, 0.55);
+}
+
+/* KEY FEATURES */
+.features {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: 24px;
+  padding: 20px;
+}
+
+.features h2 {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #5eead4;
+}
+
+.feature-card {
+  background: rgba(7, 17, 31, 0.95);
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  border-radius: 18px;
+  padding: 17px;
+  margin-bottom: 13px;
+}
+
+.feature-card:last-child { margin-bottom: 0; }
+
+.feature-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #a7f3d0;
+}
+
+.feature-card p {
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 12px;
+  margin-top: 22px;
+  line-height: 1.8;
+}
+
+@media (max-width: 420px) {
+  .page { max-width: 390px; padding: 14px 10px 28px; }
+  .hero { padding: 24px 14px 20px; }
+  .logo-circle { width: 110px; height: 110px; }
+  .brain { font-size: 34px; }
+  h1 { font-size: 31px; }
+  .bn-text { font-size: 16.5px; }
+  .en-text { font-size: 14.5px; }
+  .feature-row span { font-size: 25px; }
+  .feature-row p { font-size: 12px; }
+}
