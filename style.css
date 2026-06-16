@@ -1,400 +1,107 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="aMygbpDhvn15iTali2QeLMbSI8nRIQ9R52K6WaBafY" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Number Lookup by Alvi Tech</title>
+  <meta name="description" content="Number Lookup by Alvi Tech. Find identity behind any phone number instantly." />
+  <meta name="keywords" content="number lookup, phone lookup, number identify, caller identity, Alvi Tech" />
+  <link rel="stylesheet" href="style.css?v=1000" />
+</head>
+<body>
 
-body {
-  background: #0a0f1e;
-  color: #ffffff;
-  font-family: 'Segoe UI', sans-serif;
-  min-height: 100vh;
-}
+  <nav class="navbar">
+    <div class="nav-logo">
+      <div class="nav-icon">👤</div>
+      <div class="nav-text">
+        <div class="nav-title">Number Identity</div>
+        <div class="nav-sub">BY ALVI TECH</div>
+      </div>
+    </div>
+    <div class="nav-menu">☰</div>
+  </nav>
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  border-bottom: 1px solid rgba(0, 255, 150, 0.15);
-  background: rgba(10, 15, 30, 0.98);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+  <main class="page">
+    <section class="hero">
+      <div class="logo-circle">
+        <div class="logo-text">NUMBER INTELLIGENCE</div>
+        <div class="brain">🧠</div>
+      </div>
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+      <h1>Number Identity</h1>
+      <h1 class="green">Alvi Tech</h1>
+      <div class="divider">🛡</div>
 
-.nav-icon {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #00ff96;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
+      <p class="bn-text">যেকোনো নাম্বারের পরিচয় এখন এক ক্লিকে।</p>
+      <p class="en-text">Find identity behind any phone number instantly.</p>
 
-.nav-title {
-  font-size: 15px;
-  font-weight: 700;
-}
+      <div class="search-panel">
+        <div class="input-wrap">
+          <span class="input-icon">📱</span>
+          <input id="number" type="tel" placeholder="Enter number e.g. 017XXXXXXXX" />
+        </div>
+        <div id="loading" class="loading hidden">Searching information...</div>
+        <div id="result" class="result hidden"></div>
+        <button onclick="lookupNumber()">🔍 Search Identity</button>
+      </div>
+    </section>
 
-.nav-sub {
-  font-size: 10px;
-  color: #00ff96;
-  letter-spacing: 2px;
-}
+    <section class="why-section">
+      <h2>Why Choose Us?</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <span>⚡</span>
+          <h3>Fast Lookup</h3>
+          <p>Get result instantly within seconds.</p>
+        </div>
+        <div class="why-card">
+          <span>🔒</span>
+          <h3>Secure API</h3>
+          <p>Your data is safe with advanced encryption.</p>
+        </div>
+        <div class="why-card">
+          <span>📱</span>
+          <h3>Mobile Friendly</h3>
+          <p>Works perfectly on any device.</p>
+        </div>
+      </div>
+    </section>
 
-.nav-menu {
-  font-size: 24px;
-  cursor: pointer;
-}
+    <section class="contact-section">
+      <a href="https://www.facebook.com/share/1Crcd8PcbM/" target="_blank" class="contact-box">
+        <div class="fb-icon">f</div>
+        <span>Contact</span>
+      </a>
+    </section>
 
-.page {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 24px 16px 40px;
-}
+    <section class="features-section">
+      <h2>Key Features</h2>
+      <div class="feature-card">
+        <h3>⚡ Instant Results</h3>
+        <p>Get operator details in milliseconds. No waiting.</p>
+      </div>
+      <div class="feature-card">
+        <h3>💚 Completely Free</h3>
+        <p>Our lookup tool and developer API are 100% free to use, with no hidden costs.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔒 Privacy First</h3>
+        <p>We do not store or log any numbers you search. Your history is saved only on your device.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🛠 Developer Friendly</h3>
+        <p>Integrate number validation into your own projects with our simple, public REST API.</p>
+      </div>
+    </section>
 
-.hero {
-  background: linear-gradient(145deg, #0d1b2e, #0a1628);
-  border: 1px solid rgba(0, 255, 150, 0.2);
-  border-radius: 24px;
-  padding: 32px 20px;
-  text-align: center;
-  margin-bottom: 20px;
-}
+    <footer>
+      <p>🛡 Powered by <span class="green">Alvi Tech</span> • Trusted Number Intelligence</p>
+      <p>© 2026 Number Identity Alvi Tech</p>
+      <p>Privacy: We do not store searched phone numbers.</p>
+    </footer>
+  </main>
 
-.logo-circle {
-  width: 120px;
-  height: 120px;
-  border: 2px solid #00ff96;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 255, 150, 0.05);
-}
-
-.logo-text {
-  font-size: 9px;
-  color: #00ff96;
-  letter-spacing: 1px;
-  font-weight: 700;
-  text-align: center;
-  padding: 0 8px;
-}
-
-.brain {
-  font-size: 36px;
-}
-
-h1 {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-h1 span {
-  display: block;
-  color: #00ff96;
-}
-
-.divider {
-  font-size: 20px;
-  margin: 10px 0;
-  opacity: 0.6;
-}
-
-.bn-text {
-  font-size: 15px;
-  color: #cbd5e1;
-  margin-bottom: 6px;
-}
-
-.en-text {
-  font-size: 13px;
-  color: #94a3b8;
-  margin-bottom: 20px;
-}
-
-.search-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.input-wrap {
-  display: flex;
-  align-items: center;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(0, 255, 150, 0.3);
-  border-radius: 14px;
-  padding: 0 14px;
-}
-
-.input-icon {
-  font-size: 20px;
-  margin-right: 10px;
-}
-
-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #fff;
-  font-size: 15px;
-  padding: 14px 0;
-}
-
-input::placeholder {
-  color: #64748b;
-}
-
-button {
-  background: linear-gradient(135deg, #00c97a, #00ff96);
-  color: #0a0f1e;
-  border: none;
-  border-radius: 14px;
-  padding: 16px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  width: 100%;
-}
-
-button:active {
-  opacity: 0.85;
-}
-
-.loading {
-  margin: 6px 0 10px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(0, 255, 150, 0.08);
-  color: #00ff96;
-  font-size: 15px;
-  text-align: center;
-}
-
-.hidden { display: none; }
-
-.result {
-  margin: 8px 0 10px;
-}
-
-.result-card {
-  background: #07111f;
-  border: 1px solid rgba(0, 255, 150, 0.28);
-  border-radius: 18px;
-  padding: 15px;
-}
-
-.result-card h3 {
-  color: #00ff96;
-  margin-bottom: 12px;
-}
-
-.result-row {
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
-}
-
-.result-row:last-child {
-  border-bottom: none;
-}
-
-.label {
-  font-size: 11px;
-  color: #94a3b8;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.value {
-  font-size: 15px;
-  color: white;
-  word-break: break-word;
-}
-
-.error {
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  color: #fecaca;
-  border-radius: 16px;
-  padding: 14px;
-}
-
-.feature-row {
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  overflow: hidden;
-  border-radius: 22px;
-  background: rgba(10, 15, 30, 0.94);
-  border: 1px solid rgba(0, 255, 150, 0.3);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32);
-}
-
-.feature-row div {
-  text-align: center;
-  padding: 16px 6px;
-  border-right: 1px solid rgba(0, 255, 150, 0.22);
-}
-
-.feature-row div:last-child {
-  border-right: none;
-}
-
-.feature-row span {
-  display: block;
-  font-size: 28px;
-  margin-bottom: 8px;
-  color: #00ff96;
-}
-
-.feature-row p {
-  font-size: 13px;
-  line-height: 1.25;
-  font-weight: 900;
-  color: #fff;
-}
-
-.contact-section {
-  margin-top: 18px;
-}
-
-.contact-box {
-  min-height: 105px;
-  text-decoration: none;
-  background: linear-gradient(135deg, rgba(10, 15, 30, 0.96), rgba(0, 40, 20, 0.65));
-  border: 1px solid rgba(0, 255, 150, 0.32);
-  border-radius: 26px;
-  padding: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  color: white;
-  font-size: 26px;
-  font-weight: 900;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
-  margin-bottom: 28px;
-}
-
-.fb-icon {
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #60a5fa, #1877f2, #0a58ca);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  font-weight: 900;
-  box-shadow: 0 0 22px rgba(59, 130, 246, 0.55);
-}
-
-.features {
-  margin-top: 24px;
-  background: rgba(10, 15, 30, 0.9);
-  border: 1px solid rgba(0, 255, 150, 0.18);
-  border-radius: 24px;
-  padding: 20px;
-  text-align: center;
-}
-
-.features h2 {
-  text-align: center;
-  width: 100%;
-  display: block;
-  margin-bottom: 16px;
-  color: #fff;
-}
-
-.feature-card {
-  background: rgba(0, 255, 150, 0.05);
-  border: 1px solid rgba(0, 255, 150, 0.18);
-  border-radius: 18px;
-  padding: 17px;
-  margin-bottom: 13px;
-  text-align: center;
-}
-
-.feature-card:last-child {
-  margin-bottom: 0;
-}
-
-.feature-card h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
-  color: #00ff96;
-}
-
-.feature-card p {
-  color: #cbd5e1;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-footer {
-  text-align: center;
-  color: #64748b;
-  font-size: 12px;
-  margin-top: 22px;
-  line-height: 1.8;
-}
-
-.green {
-  color: #00ff96;
-  font-weight: 700;
-}
-
-@media (max-width: 420px) {
-  .page {
-    max-width: 390px;
-    padding: 14px 10px 28px;
-  }
-
-  .hero {
-    padding: 24px 14px 20px;
-  }
-
-  .logo-circle {
-    width: 110px;
-    height: 110px;
-  }
-
-  .brain {
-    font-size: 34px;
-  }
-
-  h1 {
-    font-size: 31px;
-  }
-
-  .bn-text {
-    font-size: 16.5px;
-  }
-
-  .en-text {
-    font-size: 14.5px;
-  }
-
-  .feature-row span {
-    font-size: 25px;
-  }
-
-  .feature-row p {
-    font-size: 12px;
-  }
-}
+  <script src="script.js?v=1000"></script>
+</body>
+</html>
