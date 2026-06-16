@@ -145,8 +145,10 @@ input {
   border: none;
   outline: none;
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
   padding: 14px 0;
+  min-width: 0;
+  width: 100%;
 }
 
 input::placeholder { color: #64748b; }
