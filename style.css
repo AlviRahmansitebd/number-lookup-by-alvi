@@ -370,21 +370,21 @@ footer {
 }
 
 .clear-btn {
-  background: rgba(148,163,184,0.2);
-  border: none;
-  border-radius: 50%;
-  color: #94a3b8;
-  font-size: 12px;
+  background: rgba(148,163,184,0.2) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  color: #94a3b8 !important;
+  font-size: 12px !important;
   cursor: pointer;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 0;
-  box-shadow: none;
-  min-width: 26px;
-  width: 26px;
-  height: 26px;
+  padding: 0 !important;
+  box-shadow: none !important;
+  min-width: 26px !important;
+  width: 26px !important;
+  height: 26px !important;
 }
 
 .clear-btn:active { opacity: 0.7; }
