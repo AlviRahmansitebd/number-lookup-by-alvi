@@ -66,12 +66,10 @@ function showNumberResult(data) {
     </div>`;
 }
 
-function clearInput(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  DOM.number().value = "";
-  DOM.result().className = "result hidden";
-  DOM.result().innerHTML = "";
-  DOM.loading().classList.add("hidden");
-  DOM.number().focus();
+function clearInput() {
+  document.getElementById("number").value = "";
+  document.getElementById("result").className = "result hidden";
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("loading").className = "loading hidden";
+  document.getElementById("number").focus();
 }
