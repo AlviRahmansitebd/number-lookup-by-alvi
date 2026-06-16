@@ -65,3 +65,10 @@ function showNumberResult(data) {
       <div class="result-row"><div class="label">Type</div><div class="value">${escapeHtml(type)}</div></div>
     </div>`;
 }
+
+function clearInput() {
+  DOM.number().value = "";
+  DOM.result().className = "result hidden";
+  DOM.result().innerHTML = "";
+  DOM.number().focus();
+}
