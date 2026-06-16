@@ -37,14 +37,15 @@
       <p class="en-text">Find identity behind any phone number instantly.</p>
 
       <div class="search-panel">
-        <div class="input-wrap">
-          <span class="input-icon">📱</span>
-          <input id="number" type="tel" placeholder="Enter number e.g. 017XXXXXXXX" />
-        </div>
-        <div id="loading" class="loading hidden">Searching information...</div>
-        <div id="result" class="result hidden"></div>
-        <button onclick="lookupNumber()">🔍 Search Identity</button>
-      </div>
+  <div class="input-wrap">
+    <span class="input-icon">📱</span>
+    <input id="number" type="tel" placeholder="Enter number e.g. 017XXXXXXXX" />
+    <button class="clear-btn" onclick="clearInput()">✕</button>
+  </div>
+  <button onclick="lookupNumber()">🔍 Search Identity</button>
+  <div id="loading" class="loading hidden">Searching information...</div>
+  <div id="result" class="result hidden"></div>
+</div>
     </section>
 
     <section class="why-section">
