@@ -27,27 +27,18 @@ function pick(obj, keys, fallback = "N/A") {
 
 async function lookupNumber() {
   const number = DOM.number().value.trim();
-
-  if (!number) {
-    showError("Please enter a mobile number.");
-    return;
-  }
-
+  if (!number) { showError("Please enter a mobile number."); return; }
   DOM.result().className = "result hidden";
   DOM.result().innerHTML = "";
   DOM.loading().classList.remove("hidden");
-
   try {
     const response = await fetch(`/api/lookup?number=${encodeURIComponent(number)}`);
     const data = await response.json();
-
     DOM.loading().classList.add("hidden");
-
     if (!response.ok || data.error || data.status === "error" || data.code === "INVALID_KEY") {
       showError(data.message || data.error || "Lookup failed.");
       return;
     }
-
     showNumberResult(data);
   } catch (error) {
     DOM.loading().classList.add("hidden");
@@ -58,38 +49,19 @@ async function lookupNumber() {
 function showNumberResult(data) {
   const resultBox = DOM.result();
   resultBox.className = "result success";
-
   const info = data.data || data.result || data;
-
   const name = pick(info, ["name", "NAME", "full_name", "fullname"], "Not Found");
   const phone = pick(info, ["number", "phone", "mobile", "international_format"], "N/A");
   const country = pick(info, ["country", "country_name", "location"], "N/A");
   const carrier = pick(info, ["carrier", "operator", "sim", "network"], "N/A");
   const type = pick(info, ["type", "line_type", "phone_type"], "Unknown");
-
   resultBox.innerHTML = `
     <div class="result-card">
       <h3>✅ Lookup Result</h3>
-      <div class="result-row">
-        <div class="label">Name</div>
-        <div class="value">${escapeHtml(name)}</div>
-      </div>
-      <div class="result-row">
-        <div class="label">Number</div>
-        <div class="value">${escapeHtml(phone)}</div>
-      </div>
-      <div class="result-row">
-        <div class="label">Country / Location</div>
-        <div class="value">${escapeHtml(country)}</div>
-      </div>
-      <div class="result-row">
-        <div class="label">Carrier / Operator</div>
-        <div class="value">${escapeHtml(carrier)}</div>
-      </div>
-      <div class="result-row">
-        <div class="label">Type</div>
-        <div class="value">${escapeHtml(type)}</div>
-      </div>
-    </div>
-  `;
+      <div class="result-row"><div class="label">Name</div><div class="value">${escapeHtml(name)}</div></div>
+      <div class="result-row"><div class="label">Number</div><div class="value">${escapeHtml(phone)}</div></div>
+      <div class="result-row"><div class="label">Country / Location</div><div class="value">${escapeHtml(country)}</div></div>
+      <div class="result-row"><div class="label">Carrier / Operator</div><div class="value">${escapeHtml(carrier)}</div></div>
+      <div class="result-row"><div class="label">Type</div><div class="value">${escapeHtml(type)}</div></div>
+    </div>`;
 }
